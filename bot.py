@@ -1,14 +1,33 @@
-import requests 
-import random 
-import time 
+import requests
+import random
+import time
 import os
 
-VIDEO_URL = os.getenv("VIDEO_URL", "https://youtube.com/shorts/y1miCbXwHBg?si=sW_j3NTaL7vkLD4E")
+VIDEO_URL = os.environ.get("VIDEO_URL") or "https://youtube.com/shorts/y1miCbXwHBg"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "Referer": "https://www.google.com/",
+}
 
-with open("proxies.txt") as f: proxies = [line.strip() for line in f if line.strip()]
+def view(proxy):
+    try:
+        res = requests.get(
+            VIDEO_URL,
+            headers=headers,
+            proxies={
+                "http": f"http://{proxy}",
+                "https": f"http://{proxy}"
+            },
+            timeout=8
+        )
+        print(f"[✅] View sent with {proxy}")
+    except:
+        print(f"[❌] Failed with {proxy}")
 
-headers = { "User-Agent": "Mozilla/5.0", "Referer": "https://www.google.com/" }
+with open("proxies.txt") as f:
+    proxies = f.read().splitlines()
 
-def view(proxy): try: res = requests.get(VIDEO_URL, headers=headers, proxies={"http": f"http://{proxy}", "https": f"http://{proxy}"}, timeout=8) print(f"[✅] View sent with {proxy}") except: print(f"[❌] Failed with {proxy}")
-
-while True: proxy = random.choice(proxies) view(proxy) time.sleep(15)
+for i in range(10):  # Kirim 10 view
+    proxy = random.choice(proxies)
+    view(proxy)
+    time.sleep(2)
