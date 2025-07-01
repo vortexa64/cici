@@ -1,6 +1,6 @@
 import requests
 
-url = "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt"
+url = "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=1000&country=all&ssl=all&anonymity=elite"
 res = requests.get(url)
 proxies = res.text.strip().split('\n')[:50]  # Ambil 50 proxy
 
