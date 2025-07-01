@@ -1,4 +1,7 @@
-import requests import random import time import os
+import requests 
+import random 
+import time 
+import os
 
 VIDEO_URL = os.getenv("VIDEO_URL", "https://youtube.com/shorts/y1miCbXwHBg?si=sW_j3NTaL7vkLD4E")
 
