@@ -2,14 +2,13 @@ name: Python View Bot
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch:
-
 jobs:
   view:
     runs-on: ubuntu-latest
     env:
-      VIDEO_URL: 'https://www.youtube.com/shorts/y1miCbXwHBg?vq=small'
+      VIDEO_URL: 'https://youtube.com/shorts/y1miCbXwHBg?si=sW_j3NTaL7vkLD4E'
 
     steps:
       - name: Checkout repository
