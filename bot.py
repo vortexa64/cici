@@ -1,6 +1,6 @@
 import requests import random import time import os
 
-VIDEO_URL = os.getenv("VIDEO_URL", "https://www.youtube.com/shorts/y1miCbXwHBg?vq=small")
+VIDEO_URL = os.getenv("VIDEO_URL", "https://youtube.com/shorts/y1miCbXwHBg?si=sW_j3NTaL7vkLD4E")
 
 with open("proxies.txt") as f: proxies = [line.strip() for line in f if line.strip()]
 
